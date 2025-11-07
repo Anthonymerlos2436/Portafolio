@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>portafolio</title>
+    <link rel="stylesheet" href="portafolix.css">
+</head>
+<body>
+    
+
+<video id="video" autoplay muted loop>
+    <source src="13820343_3840_2160_30fps.mp4" type="video/mp4">
+    Tu navegador no soporta la etiqueta de video.
+</video>
+
+<div class="perfil">
+    <img  class="imagen" src="https://media.istockphoto.com/id/1322708323/es/vector/circunferencia-icono-con-efecto-de-corte-de-papel-sobre-fondo-en-blanco.jpg?s=170667a&w=0&k=20&c=S-0CcRRxJNtLJ2g8yoQqasqTnIA5MLula4XofvwCEJ4=" alt="perfil">
+</div>
+
+
+<div class="perfil2">
+    <img id="imagenmio" class="imagen2">
+    <input type="file" id="fileinput" style="display: none;">
+</div>
+
+
+<script>
+
+const img = document.getElementById("imagenmio");
+const fileInput = document.getElementById("fileinput");
+
+window.onload = () => {
+    const perilguardado = localStorage.getItem("perfilesguardados");
+    if (perilguardado) {
+        img.src = perilguardado;
+    }
+};
+
+
+img.onclick = () => fileInput.click();
+
+fileInput.onchange = () => {
+    const archivo = fileInput.files[0]; 
+    const leer = new FileReader(); 
+   
+
+    leer.onload = () => {
+        const base64 = leer.result;
+        img.src = base64; 
+        localStorage.setItem("perfilesguardados", base64); 
+    };
+    leer.readAsDataURL(archivo);
+};
+
+
+
+
+</script>
+
+        <img class="img" src="13820343_3840_2160_30fps.mp4" alt="" width="7000px">
+
+<div class="opciones">
+    <a href="#" onclick="iniciosesion()" style="text-decoration: none; color: white; margin-right: 20px;" >Iniciar Sesion</a>
+    <a href="http://127.0.0.1:5500/sobre%20mi.html" class="confirmar" style="text-decoration: none; color: white; margin-right: 20px ;">Sobre mi</a>
+    <a href="http://127.0.0.1:5500/contacto.html" style="text-decoration: none; color: white; margin-right: 20px;">Contacto</a>
+    <a  onclick="cerrarsesion()" style="text-decoration: none; color: white; margin-right: 20px;">Cerrar Sesión</a>
+
+
+<script>
+
+   
+
+function cerrarsesion(){
+let respuesta = confirm("¿Desea cerrar sesión?"); 
+
+   if(respuesta){ 
+    alert("Sesión Cerrada");
+    window.location.href = "http://127.0.0.1:5500/index.html";
+    return true;
+
+}else{
+
+    alert("No se cerro sesion");
+    return false;
+    
+}
+
+}
+
+</script>
+
+
+<script>
+
+function iniciosesion(){
+    if(localStorage.getItem("usuarioactivo")){
+        alert("Ya has iniciado sesion");
+        return false;
+    }else{
+        window.location.href = "http://127.0.0.1:5500/portafolio.html";
+        return true;
+    }
+}
+</script>
+
+
+
+
+
+</div>
+
+
+
+
+    <header class="texto">
+    <h1 id="titulo" >Anthony David Merlos Pacheco</h1> 
+    <p id="text" class="textoestudiante">Estudiante de un instituto,
+         Estudiante de Instituto Emiliani Somascos – 5to año de Bachillerato</p>
+    </header>
+
+<script>
+const p1 = document.getElementById("text");
+
+
+
+const guardartexto = localStorage.getItem("textoguardado2");
+
+p1.addEventListener("click", () => {
+    p1.contentEditable = true;
+    p1.focus()
+});
+
+if (guardartexto) {
+    p1.textContent = guardartexto;
+}
+
+
+p1.addEventListener("blur", () => {
+    p1.contentEditable = false;
+    localStorage.setItem("textoguardado2", p1.textContent);
+}); 
+
+
+
+
+</script>
+
+
+
+<script>
+    const h1 = document.getElementById("titulo");
+    const textoguardar = localStorage.getItem("textoguardado");
+
+
+if (textoguardar) {
+    h1.textContent = textoguardar;
+}
+
+    h1.addEventListener("click", () => {
+        h1.contentEditable = true;
+        h1.focus()
+    });
+
+
+    h1.addEventListener("blur", () => {
+        h1.contentEditable = false;
+        localStorage.setItem("textoguardado", h1.textContent);
+    });
+</script>
+
+
+
+    <header class="mitexto">
+        <h2 id="sobremir"  class="sobremi">Sobre mi</h2>
+         <p id="parrafo" class="estudiante">Soy un estudiante del instituto del Emiliani Somascos mi carrera
+            esta escrita en programacion, me gusta mucho la programacion
+        </header>
+    </p>
+
+
+
+    <script>
+
+const parrafo = document.getElementById("parrafo");
+const textoreguardado = localStorage.getItem("textoreguardado");
+
+
+if(textoreguardado){
+    parrafo.textContent = textoreguardado;
+
+}
+
+
+parrafo.addEventListener("click", () => {
+parrafo.contentEditable = true;
+parrafo.focus()
+});
+
+parrafo.addEventListener("blur", () => {
+    parrafo.contentEditable = false;
+  localStorage.setItem("textoreguardado", parrafo.textContent);
+});
+
+
+    </script>
+
+    <script>
+
+const demipersona = document.getElementById("sobremir");
+const textoguardado= localStorage.getItem("quiensoy");
+
+
+if(textoguardado){
+    demipersona.textContent = textoguardado;
+}
+
+demipersona.addEventListener("click", () => {
+    demipersona.contentEditable = true;
+    demipersona.focus();
+});
+
+demipersona.addEventListener("blur", () => {
+    demipersona.contentEditable = false;
+    localStorage.setItem("quiensoy", demipersona.textContent);
+});
+
+
+    </script>
+
+    
+    
+</body>
+</html>

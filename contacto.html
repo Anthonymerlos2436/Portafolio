@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contacto</title>
+<style>
+
+.contactame {
+    background-color: #201e1e;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+
+.contactame h3 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+
+.form-contactame {
+    max-width: 400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+
+.form-contactame input,
+.form-contactame textarea {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+.form-contactame button {
+    padding: 10px;
+    background-color: #f05a28;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.form-contactame button:hover {
+    background-color: #d04c20;
+}
+
+@media (max-width: 768px) {
+    .contactame {
+        padding: 30px 10px;
+    }
+
+    .form-contactame {
+        max-width: 100%;
+    }
+}
+</style>
+</head>
+<body>
+<section class="contactame" id="contacto">
+    <h3>Contacto</h3>
+    <form class="form-contactame" action="enviar.php" method="POST">
+        <input type="text" name="name" placeholder="Nombre" required>
+        <input type="email" name="email" placeholder="Correo" required>
+        <textarea name="message" rows="2" placeholder="Mensaje" required></textarea>
+        <button type="submit">Enviar</button>
+    </form>
+</section>
+</body>
+</html>

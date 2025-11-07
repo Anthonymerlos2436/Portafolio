@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="portafolix.css">
+    <link rel="icon" type="image/png" href="img/295128.png">
+
+</head>
+
+<body>
+
+
+
+    <video id="videos" autoplay muted loop>
+        <source src="14471387_1920_1080_30fps.mp4" type="video/mp4">
+    </video>
+
+
+
+    <div class="login">
+        <h2 class="Nombre">Ingrese su Nombre</h2>
+        <input id="Name" class="ingresar" type="text" placeholder="  Nombre de Usuario"
+            style="background-color: hsl(0, 0%, 0%); color: rgb(20, 20, 20); padding-left: 20px;">
+        <h2 class="Contraseña">Ingrese Contraseña</h2>
+        <input id="pass" class="ingresar2" type="password"
+            style="background-color: rgb(0, 0, 0); color: rgba(255, 255, 255, 0.326); padding-left: 20px;"
+            placeholder="  Contraseña">
+        <button onclick="Ingresar()" class="boton" type="button">Ingresar</button>
+    </div>
+
+
+
+
+
+
+
+    <script>
+        console.log("Conexion de js nuevo");
+
+        function Ingresar() {
+
+            let usuario = document.getElementById("Name").value.trim();
+            let contraseña = document.getElementById("pass").value.trim();
+
+            if (usuario === "" || contraseña === "") {
+                alert("Por favor ingrese los campos solicitados!")
+                return;
+            }
+
+            usuario = usuario.toLowerCase();
+            contraseña = contraseña.toLowerCase();
+
+
+
+
+            if (usuario === "anthony" && contraseña === "12345") {
+                alert("Bienvenido Anthony")
+                localStorage.setItem("usuarioactivo", "true");
+                window.location.href = "portafolio.html";
+
+            } else if (usuario === "emmanuel" && contraseña === "ema123") {
+                alert("Bienvenido Emmanuel")
+                localStorage.setItem("usuarioactivo", "true");
+                window.location.href = "portafolio.html";
+
+            } else if (usuario === "sebas" && contraseña === "123") {
+                alert("Bienvenido Sebas");
+                localStorage.setItem("usuarioactivo", "true");
+                window.location.href = "portafolio.html";
+
+            } else {
+                alert("Usuario o Contraseña Incorrectos!");
+            }
+        }
+
+    </script>
+
+
+    <script>
+
+            history.pushState(null, null, location.href);
+            window.onpopstate = function () {
+                history.go(1);
+            };
+
+
+    </script>
+
+
+</body>
+
+</html>
