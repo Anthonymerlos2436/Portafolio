@@ -30,13 +30,26 @@
 const img = document.getElementById("imagenmio");
 const fileInput = document.getElementById("fileinput");
 
+
+const usuario = localStorage.getItem("usuarioactivo");
+
 window.onload = () => {
-    const perilguardado = localStorage.getItem("perfilesguardados");
-    if (perilguardado) {
-        img.src = perilguardado;
+    if (usuario) {
+    
+        const perfilGuardado = localStorage.getItem("perfil_" + usuario);
+        if (perfilGuardado) {
+            img.src = perfilGuardado;
+        } else {
+          
+            if (usuario === "anthony") img.src = "img/anthony.jpg";
+            if (usuario === "emmanuel") img.src = "img/emmanuel.jpg";
+            if (usuario === "sebas") img.src = "img/sebas.jpg";
+        }
+    } else {
+  
+        window.location.href = "index.html";
     }
 };
-
 
 img.onclick = () => fileInput.click();
 
@@ -48,7 +61,7 @@ fileInput.onchange = () => {
     leer.onload = () => {
         const base64 = leer.result;
         img.src = base64; 
-        localStorage.setItem("perfilesguardados", base64); 
+        localStorage.setItem("perfil_" + usuario, base64); 
     };
     leer.readAsDataURL(archivo);
 };
